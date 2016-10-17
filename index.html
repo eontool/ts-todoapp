@@ -78,25 +78,28 @@
 
     <div class="row m-t-3" class="" ng-show="todos.length" ng-cloak>
 
-      <div class="col-lg-4 offset-lg-4">
-        <span class="todo-count"><strong>{{remainingCount}}</strong>
-          <ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
-        </span>
+      <div class="col-lg-4 offset-lg-4 text-xs-center">
+
+        <p>
+          <strong>{{remainingCount}}</strong>
+          <ng-pluralize count="remainingCount" when="{ one: 'note left', other: 'notes left' }"></ng-pluralize>
+        </p>
+
+        <div class="btn-group" role="group">
+          <a class="btn btn-secondary" ng-class="{selected: location.path() == '/'} " href="#/">All</a>
+          <a class="btn btn-secondary" ng-class="{selected: location.path() == '/active'}" href="#/active">Active</a>
+          <a class="btn btn-secondary" ng-class="{selected: location.path() == '/completed'}" href="#/completed">Completed</a>
+        </div>
 
         <br>
-        <ul class="">
-          <li>
-            <a ng-class="{selected: location.path() == '/'} " href="#/">All</a>
-          </li>
-          <li>
-            <a ng-class="{selected: location.path() == '/active'}" href="#/active">Active</a>
-          </li>
-          <li>
-            <a ng-class="{selected: location.path() == '/completed'}" href="#/completed">Completed</a>
-          </li>
-        </ul>
-        <button class="clear-completed" ng-click="vm.clearDoneTodos()" ng-show="doneCount">Clear completed</button>
+
+        <button class="btn btn-secondary m-t-3" ng-click="vm.clearDoneTodos()" ng-show="doneCount">Clear completed</button>
+
       </div>
+
+
+
+
 
     </div>
 
